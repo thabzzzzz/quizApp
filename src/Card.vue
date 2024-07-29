@@ -7,7 +7,7 @@ console.log(quiz);
 
 
 <template>
-    <div class="cards">
+    <div class="card">
         <img :src="quiz.img" alt="">
         <div class="card-text">
             <h2>{{quiz.name}}</h2>
