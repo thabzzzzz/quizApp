@@ -1,8 +1,9 @@
-import { createRouter,
-    createWebHistory } from 'vue-router'
+import { createRouter,createWebHistory } from 'vue-router'
+import quizesView from '../views/quizePage.vue'
+import homeView from '../views/home.vue'
    
    
-   const Home = () => import('../components/quizePage.vue');
+   
    
    
    
@@ -10,14 +11,16 @@ import { createRouter,
    
        {path:"/",
    
-       name:'Home',
+       name:'homeView',
    
-       component:Home
+       component:() => import('../views/home.vue')
        },
+       {path:"/quizes",
    
-       {path:"/quiz",
-       name:'quizePage',
-       component:() => import('../components/quizePage.vue')},
+        name:'quizes',
+    
+        component:() => import('../views/quizePage.vue')
+        }
    
   
    ]
