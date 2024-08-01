@@ -15,7 +15,7 @@ import homeView from '../views/home.vue'
    
        component:() => import('../views/home.vue')
        },
-       {path:"/quizes",
+       {path:"/quizes/:id",
    
         name:'quizes',
     
