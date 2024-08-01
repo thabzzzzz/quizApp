@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
    <header>
             <h4>Question 1 of 3</h4>
