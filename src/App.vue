@@ -9,7 +9,6 @@
 <style scoped>
  
 
-  /* CARD */
 
  
 </style>
