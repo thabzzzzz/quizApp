@@ -1,43 +1,29 @@
+<script setup>
+const props = defineProps(['question']);
+
+console.log(props.question);
+
+</script>
+
 <template>
     <div class="question-container">
-        <h1>What is the chemical value of table salt</h1>
+        <h1>{{question.text}}</h1>
     </div>
     <div class="options-container">
-        <div class="option">
+        <div class="option" v-for="option in question.options" :key="option.id">
             <p class="option-label">
-                A
+                {{option.label}}
             </p>
             <div class="option-value">
-                <p>NaCL</p>
+                <p>{{ option.text }}</p>
             </div>
         </div>
 
-        <div class="option">
-            <p class="option-label">
-                B
-            </p>
-            <div class="option-value">
-                <p>NaCL</p>
-            </div>
-        </div>
+        
 
-        <div class="option">
-            <p class="option-label">
-                C
-            </p>
-            <div class="option-value">
-                <p>NaCL</p>
-            </div>
-        </div>
+     
 
-        <div class="option">
-            <p class="option-label">
-                D
-            </p>
-            <div class="option-value">
-                <p>NaCL</p>
-            </div>
-        </div>
+        
     </div>
 </template>
 

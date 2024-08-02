@@ -8,6 +8,8 @@ import quizes from '../data/quizes.json';
 const route = useRoute();
 const quizID = parseInt(route.params.id);
 
+const quiz=quizes.find(q=>q.id === quizID)
+
 const currentQuestionIndex = ref(0);
 
 </script>
@@ -15,7 +17,7 @@ const currentQuestionIndex = ref(0);
 <template>
     <div>
        <quizHeader/>
-        <question/>
+        <question :question="quiz.questions[currentQuestionIndex]"/>
         <div>
        
         </div>
