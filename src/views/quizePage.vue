@@ -41,9 +41,9 @@ const numOfCorrectQuestions = ref(0);
 const onOptionSelected = (isCorrect) => {
     if(isCorrect==true){
         numOfCorrectQuestions.value++;
-        console.log('correct answer')
+       
     } 
-    else console.log('answer is false') 
+   
     currentQuestionIndex.value++ 
     
 }

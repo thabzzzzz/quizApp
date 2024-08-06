@@ -4,9 +4,20 @@ console.log(props.numOfCorrectQuestions)
 </script>
 
 <template>
-    <div>
-        <p>this is result</p>
+    <div class="result">
+        <p>Your result...</p>
         
-        {{ numOfCorrectQuestions}}
+       <h1>{{ numOfCorrectQuestions }}</h1> 
     </div>
 </template>
+
+<style scoped>
+.result{
+    text-align: center;
+    padding: 100px 0;
+}
+
+p{
+    font-size: 25px;
+}
+</style>
