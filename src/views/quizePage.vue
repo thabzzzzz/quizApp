@@ -4,6 +4,7 @@ import quizHeader from '../components/quizHeader.vue';
 import { useRoute } from 'vue-router';
 import { ref, watch, computed } from 'vue';
 import quizes from '../data/quizes.json';
+import result from '../components/result.vue';
 
 //get the quiz ID
 const route = useRoute();
@@ -36,10 +37,10 @@ const barPercentage = computed(() => {
 })
 
 
-const numOfCorrectQesutions = ref(0);
+const numOfCorrectQuestions = ref(0);
 const onOptionSelected = (isCorrect) => {
     if(isCorrect==true){
-        numOfCorrectQesutions.value++;
+        numOfCorrectQuestions.value++;
         console.log('correct answer')
     } 
     else console.log('answer is false') 
@@ -50,7 +51,6 @@ const onOptionSelected = (isCorrect) => {
 
 <template>
     <div>
-        {{ barPercentage }}
         <quizHeader :questionStatus="questionStatus" :barPercentage="barPercentage" />
 
         <question :question="quiz.questions[currentQuestionIndex]" @SelectedOption="onOptionSelected" />
@@ -58,6 +58,9 @@ const onOptionSelected = (isCorrect) => {
 
         </div>
         <button @click="nextQuestion()">Next question</button>
+    </div>
+    <div>
+        <result :numOfCorrectQuestions="numOfCorrectQuestions" :questionStatus="questionStatus"/>
     </div>
 </template>
 
