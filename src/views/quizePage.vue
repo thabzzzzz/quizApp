@@ -10,14 +10,14 @@ const route = useRoute();
 const quizID = parseInt(route.params.id);
 
 //assign current quiz to the quiz in the fetched list ie, the one from the json
-const quiz=quizes.find(q=>q.id === quizID);
+const quiz = quizes.find(q => q.id === quizID);
 
 const currentQuestionIndex = ref(0);
 
 const nextQuestion = () => {
-  if (currentQuestionIndex.value < quiz.questions.length ) {
-    currentQuestionIndex.value++;
-  }
+    if (currentQuestionIndex.value < quiz.questions.length) {
+        currentQuestionIndex.value++;
+    }
 };
 
 
@@ -27,33 +27,38 @@ watch(()=>currentQuestionIndex.value, ()=>{
     questionStatus.value = `${currentQuestionIndex.value}/${quiz.questions.length}`;
 }) */
 
-const questionStatus= computed(()=>{
+const questionStatus = computed(() => {
     return `${currentQuestionIndex.value}/${quiz.questions.length}`
 })
 
-const barPercentage= computed(()=>{
-    return `${Math.floor((currentQuestionIndex.value / quiz.questions.length) * 100)}%`;})
+const barPercentage = computed(() => {
+    return `${Math.floor((currentQuestionIndex.value / quiz.questions.length) * 100)}%`;
+})
+
+
+const numOfCorrectQesutions = ref(0);
+const onOptionSelected = (isCorrect) => {
+    if(isCorrect==true){
+        numOfCorrectQesutions.value++;
+        console.log('correct answer')
+    } 
+    else console.log('answer is false') 
+    currentQuestionIndex.value++ 
+    
+}
 </script>
 
 <template>
     <div>
         {{ barPercentage }}
-       <quizHeader :questionStatus="questionStatus"
-       :barPercentage="barPercentage"
-       />
+        <quizHeader :questionStatus="questionStatus" :barPercentage="barPercentage" />
 
-        <question 
-        :question="quiz.questions[currentQuestionIndex]"
-        />
+        <question :question="quiz.questions[currentQuestionIndex]" @SelectedOption="onOptionSelected" />
         <div>
-       
+
         </div>
         <button @click="nextQuestion()">Next question</button>
     </div>
 </template>
 
-<style scoped>
-
-
-
-</style>
+<style scoped></style>
