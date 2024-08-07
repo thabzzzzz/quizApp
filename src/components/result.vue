@@ -1,13 +1,14 @@
 <script setup>
-const props = defineProps(['numOfCorrectQuestions']);
-console.log(props.numOfCorrectQuestions)
+const props = defineProps(['numOfCorrectQuestions','quizQuestionLength']);
+
+
 </script>
 
 <template>
     <div class="result">
         <p>Your result...</p>
         
-       <h1>{{ numOfCorrectQuestions }}</h1> 
+       <h1>{{ numOfCorrectQuestions }} / {{ quizQuestionLength }} </h1> 
     </div>
 </template>
 

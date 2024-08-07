@@ -15,9 +15,7 @@ const quiz = quizes.find(q => q.id === quizID);
 
 const currentQuestionIndex = ref(0);
 
-const nextQuestion = () => {
 
-};
 
 const showResult= ref(false)
 
@@ -53,13 +51,11 @@ const onOptionSelected = (isCorrect) => {
 
 <template>
     <div>
+
         <quizHeader :questionStatus="questionStatus" :barPercentage="barPercentage" />
-
         <question v-if="!showResult" :question="quiz.questions[currentQuestionIndex]" @SelectedOption="onOptionSelected" />
-        <result v-else :numOfCorrectQuestions="numOfCorrectQuestions" :questionStatus="questionStatus"/>
+        <result v-else :numOfCorrectQuestions="numOfCorrectQuestions" :quizQuestionLength="quiz.questions.length"/>
 
-        
-       
     </div>
     <div >
     </div>
