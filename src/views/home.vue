@@ -28,9 +28,14 @@ watch(search, ()=>{
           <p>{{ quiz.questions.length }} questions</p>
         </div>
       </div> -->
-      <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz">
+      <TransitionGroup name="card" appear >
+        <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz" >
+        </Card>
+      </TransitionGroup>
+    
+     
 
-      </Card>
+     
 
     </div>
   </div>
@@ -68,4 +73,13 @@ watch(search, ()=>{
     margin-top: 40px;
   }
 
+  .card-enter-active,
+.card-leave-active {
+  transition: all 0.5s ease;
+}
+.card-enter-from,
+.card-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
 </style>
