@@ -4,6 +4,7 @@ import { ref,watch } from 'vue';
 import Card from '../Card.vue';
 import {RouterView} from 'vue-router';
 import quizesView from '../views/quizePage.vue'
+import gsap from 'gsap'
  
 const quizes = ref(q);
 const search = ref('');
@@ -11,6 +12,24 @@ const search = ref('');
 watch(search, ()=>{
   quizes.value= q.filter(quiz=>quiz.name.toLowerCase().includes(search.value.toLocaleLowerCase()))
 })
+
+const beforeEnter = (el)=>{
+  //card-enter-from
+  el.style.transform = 'translateY(-30px)';
+  el.style.opacity=0;
+  
+}
+const enter = (el)=>{
+ gsap.to(el,{
+  opacity:1,
+  y:0,
+  duration:0.4,
+  delay:el.dataset.index *0.2
+ })
+}
+const afterEnter = ()=>{
+  console.log('after enter')
+}
 </script>
 
 <template>
@@ -28,8 +47,12 @@ watch(search, ()=>{
           <p>{{ quiz.questions.length }} questions</p>
         </div>
       </div> -->
-      <TransitionGroup name="card" appear >
-        <Card v-for="quiz in quizes" :key="quiz.id" :quiz="quiz" >
+      <TransitionGroup  appear
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      >
+        <Card v-for="(quiz, index) in quizes" :key="quiz.id" :quiz="quiz" :data-index="index" >
         </Card>
       </TransitionGroup>
     
